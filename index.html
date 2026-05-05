@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pause — Designed for the moments between</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:      #0B1520;
+      --navy-2:    #111D2E;
+      --navy-3:    #162032;
+      --navy-4:    #1C2A40;
+      --teal:      #5ED4D4;
+      --teal-dim:  #3AAFB0;
+      --white:     #FFFFFF;
+      --off-white: #F4F6F8;
+      --muted:     rgba(255,255,255,0.45);
+      --muted-2:   rgba(255,255,255,0.22);
+      --purple:    #2D1B4E;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      font-size: 1rem;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 2.5rem;
+      background: rgba(11, 21, 32, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--muted-2);
+    }
+
+    .nav-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      text-decoration: none;
+    }
+
+    .nav-eyebrow {
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      opacity: 0.8;
+    }
+
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.5rem;
+      color: var(--white);
+      letter-spacing: 0.02em;
+    }
+
+    .nav-cta {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--teal);
+      text-decoration: none;
+      border: 1px solid rgba(94, 212, 212, 0.35);
+      padding: 0.55rem 1.25rem;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-cta:hover {
+      background: var(--teal);
+      color: var(--navy);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100svh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 4rem;
+      padding: 8rem 6rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(94,212,212,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-text { max-width: 520px; }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 1.5rem;
+      opacity: 0.9;
+    }
+
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--teal);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 400px;
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--teal);
+      color: var(--navy);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 1rem 2.25rem;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
+
+    /* ── HERO PHONE MOCKUP ── */
+    .hero-phone {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* ── PHONE FRAME ── */
+    .phone {
+      width: 240px;
+      height: 490px;
+      background: #0d1520;
+      border-radius: 38px;
+      border: 2px solid rgba(255,255,255,0.12);
+      position: relative;
+      overflow: hidden;
+      box-shadow:
+        0 0 0 1px rgba(0,0,0,0.5),
+        0 40px 80px rgba(0,0,0,0.6),
+        0 0 60px rgba(94,212,212,0.06);
+      flex-shrink: 0;
+    }
+
+    .phone-notch {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 22px;
+      background: #000;
+      border-radius: 12px;
+      z-index: 10;
+    }
+
+    /* Home screen */
+    .screen-home {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, #0d1e30 0%, #0f2438 50%, #111d2e 100%);
+      padding: 52px 16px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .featured-card {
+      background: linear-gradient(135deg, #1a3a4a 0%, #0f2a3a 100%);
+      border-radius: 14px;
+      padding: 14px 16px 12px;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 4px;
+    }
+
+    .featured-card::after {
+      content: '';
+      position: absolute;
+      top: -20px; right: -20px;
+      width: 80px; height: 80px;
+      background: radial-gradient(circle, rgba(94,212,212,0.25) 0%, transparent 70%);
+    }
+
+    .featured-label {
+      font-size: 7px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 4px;
+    }
+
+    .featured-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 2px;
+    }
+
+    .featured-sub {
+      font-size: 8px;
+      color: rgba(255,255,255,0.5);
+      font-style: italic;
+      margin-bottom: 8px;
+    }
+
+    .begin-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(94,212,212,0.2);
+      border: 1px solid rgba(94,212,212,0.4);
+      border-radius: 20px;
+      padding: 3px 10px;
+      font-size: 7.5px;
+      font-weight: 500;
+      color: var(--teal);
+    }
+
+    .sessions-label {
+      font-size: 7px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      display: flex;
+      justify-content: space-between;
+      padding: 0 2px;
+    }
+
+    .session-row {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 10px;
+      padding: 8px 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .session-min {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-weight: 600;
+      font-size: 10px;
+    }
+
+    .session-min span { font-size: 6px; font-weight: 400; opacity: 0.7; margin-top: -1px; }
+
+    .s2  { background: rgba(94,212,212,0.15); color: #5ED4D4; }
+    .s5  { background: rgba(94,180,212,0.15); color: #5EC0D4; }
+    .s10 { background: rgba(94,150,212,0.15); color: #5EA8D4; }
+    .s15 { background: rgba(130,94,212,0.15); color: #967AD4; }
+    .s30 { background: rgba(80,60,140,0.2);   color: #8070C0; }
+
+    .session-info { flex: 1; }
+    .session-name { font-size: 8.5px; font-weight: 500; color: white; }
+    .session-desc { font-size: 7px; color: rgba(255,255,255,0.45); line-height: 1.4; }
+    .session-plus { font-size: 10px; color: rgba(255,255,255,0.25); }
+
+    .breathe-text {
+      text-align: center;
+      font-size: 7px;
+      font-style: italic;
+      color: rgba(255,255,255,0.25);
+      margin-top: auto;
+      padding-top: 4px;
+    }
+
+    /* Player screen */
+    .screen-player {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, #0d1e2e 0%, #0e2030 40%, #1a2840 100%);
+      padding: 48px 18px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+
+    .player-topbar {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .player-topbar-btn {
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 8px; color: rgba(255,255,255,0.6);
+    }
+
+    .player-label {
+      font-size: 7px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .orb-ring {
+      width: 150px; height: 150px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.08);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 18px;
+      position: relative;
+    }
+
+    .orb {
+      width: 90px; height: 90px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 40% 35%, #7ae8e8 0%, #3ab5c0 35%, #1a7a8a 65%, #0f4a5a 100%);
+      box-shadow: 0 0 30px rgba(94,212,212,0.35), 0 0 60px rgba(94,212,212,0.12);
+      animation: breathe 4s ease-in-out infinite;
+    }
+
+    @keyframes breathe {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 30px rgba(94,212,212,0.35), 0 0 60px rgba(94,212,212,0.12); }
+      50% { transform: scale(1.12); box-shadow: 0 0 40px rgba(94,212,212,0.5), 0 0 80px rgba(94,212,212,0.18); }
+    }
+
+    .player-now { font-size: 7px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 4px; }
+    .player-title { font-size: 15px; font-weight: 700; color: white; margin-bottom: 3px; }
+    .player-subtitle { font-size: 8px; color: rgba(255,255,255,0.4); font-style: italic; margin-bottom: 20px; }
+
+    .waveform {
+      width: 100%;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      margin-bottom: 6px;
+    }
+
+    .wave-bar {
+      flex: 1;
+      border-radius: 2px;
+      background: rgba(94,212,212,0.25);
+    }
+    .wave-bar.active { background: var(--teal); }
+
+    .wave-bar:nth-child(1)  { height: 40%; }
+    .wave-bar:nth-child(2)  { height: 70%; }
+    .wave-bar:nth-child(3)  { height: 90%; }
+    .wave-bar:nth-child(4)  { height: 60%; }
+    .wave-bar:nth-child(5)  { height: 100%; }
+    .wave-bar:nth-child(6)  { height: 80%; }
+    .wave-bar:nth-child(7)  { height: 55%; }
+    .wave-bar:nth-child(8)  { height: 75%; }
+    .wave-bar:nth-child(9)  { height: 45%; }
+    .wave-bar:nth-child(10) { height: 65%; }
+    .wave-bar:nth-child(11) { height: 85%; }
+    .wave-bar:nth-child(12) { height: 70%; }
+    .wave-bar:nth-child(13) { height: 50%; }
+    .wave-bar:nth-child(14) { height: 40%; }
+    .wave-bar:nth-child(15) { height: 60%; }
+    .wave-bar:nth-child(16) { height: 80%; }
+    .wave-bar:nth-child(17) { height: 55%; }
+    .wave-bar:nth-child(18) { height: 35%; }
+    .wave-bar:nth-child(19) { height: 45%; }
+    .wave-bar:nth-child(20) { height: 30%; }
+
+    .wave-times {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      font-size: 6.5px;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 18px;
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .ctrl-btn {
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.07);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 9px; color: rgba(255,255,255,0.6);
+    }
+
+    .ctrl-play {
+      width: 38px; height: 38px;
+      background: rgba(255,255,255,0.12);
+      font-size: 12px;
+      color: white;
+    }
+
+    /* Box breathing screen */
+    .screen-box {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, #0d2010 0%, #112818 40%, #0e2015 100%);
+      padding: 48px 18px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .box-topbar {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .box-square-wrap {
+      width: 140px; height: 140px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .box-square {
+      width: 120px; height: 120px;
+      border: 1.5px solid rgba(94,212,212,0.35);
+      border-radius: 16px;
+      background: radial-gradient(circle at center, rgba(60,160,100,0.12) 0%, transparent 70%);
+    }
+
+    .box-dot {
+      position: absolute;
+      top: 10px; left: 10px;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--teal);
+      box-shadow: 0 0 8px var(--teal);
+      animation: trace-box 4s linear infinite;
+    }
+
+    @keyframes trace-box {
+      0%   { top: 10px; left: 10px; }
+      25%  { top: 10px; left: calc(100% - 18px); }
+      50%  { top: calc(100% - 18px); left: calc(100% - 18px); }
+      75%  { top: calc(100% - 18px); left: 10px; }
+      100% { top: 10px; left: 10px; }
+    }
+
+    .box-phase { font-size: 7px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 6px; }
+    .box-action { font-size: 20px; font-weight: 700; color: white; margin-bottom: 4px; }
+    .box-seconds { font-size: 9px; color: rgba(255,255,255,0.4); font-style: italic; margin-bottom: auto; }
+
+    .box-timer { font-size: 26px; font-weight: 300; color: white; letter-spacing: 0.04em; margin-top: auto; margin-bottom: 12px; }
+
+    .box-pause-btn {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; color: rgba(255,255,255,0.7);
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: rgba(94,212,212,0.4);
+      margin: 0 auto;
+    }
+
+    /* ── SCREENSHOTS SECTION ── */
+    .screenshots {
+      padding: 7rem 2rem;
+      background: var(--navy-2);
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .section-header {
+      max-width: 520px;
+      margin: 0 auto 4.5rem;
+    }
+
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      line-height: 1.15;
+      margin-top: 1rem;
+    }
+
+    .section-sub {
+      margin-top: 0.75rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .phones-row {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .phone-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .phone-card .phone {
+      transition: transform 0.3s ease;
+    }
+    .phone-card:hover .phone {
+      transform: translateY(-8px);
+    }
+
+    .phone-caption {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* Center phone is larger */
+    .phone-card.featured .phone {
+      width: 260px;
+      height: 530px;
+      transform: translateY(-20px);
+    }
+    .phone-card.featured:hover .phone {
+      transform: translateY(-28px);
+    }
+
+    /* ── FEATURES ── */
+    .features {
+      padding: 7rem 1.5rem;
+      background: var(--navy);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2.5rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .feature {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      padding: 1.75rem;
+      background: var(--navy-3);
+      border: 1px solid var(--muted-2);
+      transition: border-color 0.25s;
+    }
+    .feature:hover { border-color: rgba(94,212,212,0.25); }
+
+    .feature-icon {
+      font-size: 1.3rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .feature h3 {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--white);
+    }
+
+    .feature p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    /* ── QUOTE ── */
+    .quote-section {
+      padding: 6rem 1.5rem;
+      background: var(--navy-2);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quote-section::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(94,212,212,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    blockquote {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+      line-height: 1.4;
+      max-width: 620px;
+      margin: 0 auto;
+      font-style: italic;
+      color: var(--white);
+      opacity: 0.9;
+      position: relative;
+    }
+
+    cite {
+      display: block;
+      margin-top: 1.75rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-style: normal;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--teal);
+      opacity: 0.6;
+    }
+
+    /* ── WAITLIST ── */
+    .waitlist {
+      padding: 7rem 1.5rem;
+      background: var(--navy);
+    }
+
+    .waitlist-inner {
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .waitlist .section-header {
+      margin-bottom: 2.75rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-bottom: 1.1rem;
+    }
+
+    label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    input[type="text"],
+    input[type="email"],
+    select {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      background: var(--navy-3);
+      border: 1px solid var(--muted-2);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+      -webkit-appearance: none;
+      border-radius: 0;
+    }
+
+    input::placeholder { color: rgba(255,255,255,0.2); }
+    input:focus, select:focus { border-color: rgba(94,212,212,0.5); }
+
+    select option { background: var(--navy-3); }
+
+    .select-wrapper { position: relative; }
+    .select-wrapper::after {
+      content: '↓';
+      position: absolute;
+      right: 1rem; top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .form-note {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.28);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .btn-full { width: 100%; padding: 1.05rem; }
+
+    .success-msg {
+      display: none;
+      text-align: center;
+      padding: 2.5rem;
+      background: var(--navy-3);
+      border-left: 2px solid var(--teal);
+    }
+
+    .success-msg h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .success-msg p { color: var(--muted); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #060e17;
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.25);
+    }
+
+    footer span { color: rgba(255,255,255,0.5); }
+
+    /* ── ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 7rem 2rem 4rem;
+        gap: 3rem;
+      }
+      .hero-text { max-width: 100%; }
+      .hero-sub { margin: 0 auto 2.5rem; }
+      .hero-phone { order: -1; }
+      .phones-row { gap: 1rem; }
+      .phone-card.featured .phone { width: 220px; height: 450px; transform: translateY(-12px); }
+      .phone-card:not(.featured) .phone { width: 170px; height: 350px; }
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 1rem 1.25rem; }
+      .phone-card:not(.featured) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-brand">
+      <span class="nav-eyebrow">PhysAct · Mindfulness</span>
+      <span class="nav-logo">Pause</span>
+    </a>
+    <a href="#vantelista" class="nav-cta">Gå med på väntelistan</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <span class="eyebrow">Kommer snart</span>
+      <h1>Designed for the<br/><em>moments between</em></h1>
+      <p class="hero-sub">
+        En lugn, minimal mindfulness-app skapad för pauser i din vardag.
+        Andning, meditation och närvaro — på 2 till 30 minuter.
+      </p>
+      <a href="#vantelista" class="btn-primary">Anmäl intresse</a>
+    </div>
+
+    <!-- Hero phone: Session Player -->
+    <div class="hero-phone fade-up">
+      <div class="phone">
+        <div class="phone-notch"></div>
+        <div class="screen-player">
+          <div class="player-topbar">
+            <div class="player-topbar-btn">✕</div>
+            <div class="player-label">Session · 5 min</div>
+            <div class="player-topbar-btn">♪</div>
+          </div>
+          <div class="orb-ring">
+            <div class="orb"></div>
+          </div>
+          <div class="player-now">Now Playing</div>
+          <div class="player-title">Grounded Breath</div>
+          <div class="player-subtitle">Five minutes to settle the mind</div>
+          <div class="waveform">
+            <div class="wave-bar active"></div><div class="wave-bar active"></div>
+            <div class="wave-bar active"></div><div class="wave-bar active"></div>
+            <div class="wave-bar active"></div><div class="wave-bar active"></div>
+            <div class="wave-bar active"></div><div class="wave-bar active"></div>
+            <div class="wave-bar"></div><div class="wave-bar"></div>
+            <div class="wave-bar"></div><div class="wave-bar"></div>
+            <div class="wave-bar"></div><div class="wave-bar"></div>
+            <div class="wave-bar"></div><div class="wave-bar"></div>
+            <div class="wave-bar"></div><div class="wave-bar"></div>
+            <div class="wave-bar"></div><div class="wave-bar"></div>
+          </div>
+          <div class="wave-times"><span>1:54</span><span>-3:06</span></div>
+          <div class="controls">
+            <div class="ctrl-btn">↺</div>
+            <div class="ctrl-btn ctrl-play">⏸</div>
+            <div class="ctrl-btn">↻</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREENSHOTS -->
+  <section class="screenshots" id="app">
+    <div class="section-header fade-up">
+      <div class="divider"></div>
+      <h2>Se appen i action</h2>
+      <p class="section-sub">Tre skärmar. Oändliga pauser.</p>
+    </div>
+    <div class="phones-row">
+
+      <!-- Home screen -->
+      <div class="phone-card fade-up">
+        <div class="phone">
+          <div class="phone-notch"></div>
+          <div class="screen-home">
+            <div class="featured-card">
+              <div class="featured-label">Box Breathing</div>
+              <div class="featured-title">4 · 4 · 4 · 4</div>
+              <div class="featured-sub">steady as a square</div>
+              <div class="begin-btn">▶ Begin</div>
+            </div>
+            <div class="sessions-label">
+              <span>Sessions</span><span>47m this week</span>
+            </div>
+            <div class="session-row">
+              <div class="session-min s2">2<span>MIN</span></div>
+              <div class="session-info">
+                <div class="session-name">A Quick Reset</div>
+                <div class="session-desc">Release tension before your next task</div>
+              </div>
+              <div class="session-plus">+</div>
+            </div>
+            <div class="session-row">
+              <div class="session-min s5">5<span>MIN</span></div>
+              <div class="session-info">
+                <div class="session-name">Grounded Breath</div>
+                <div class="session-desc">Five minutes to settle the mind</div>
+              </div>
+              <div class="session-plus">+</div>
+            </div>
+            <div class="session-row">
+              <div class="session-min s10">10<span>MIN</span></div>
+              <div class="session-info">
+                <div class="session-name">Open Awareness</div>
+                <div class="session-desc">A gentle body scan and reset</div>
+              </div>
+              <div class="session-plus">+</div>
+            </div>
+            <div class="session-row">
+              <div class="session-min s15">15<span>MIN</span></div>
+              <div class="session-info">
+                <div class="session-name">Stillness Practice</div>
+                <div class="session-desc">Deepen into a calmer state</div>
+              </div>
+              <div class="session-plus">+</div>
+            </div>
+            <div class="session-row">
+              <div class="session-min s30">30<span>MIN</span></div>
+              <div class="session-info">
+                <div class="session-name">Drift Into Sleep</div>
+                <div class="session-desc">A slow wind-down for deep rest</div>
+              </div>
+              <div class="session-plus">🌙</div>
+            </div>
+            <div class="breathe-text">Breathe. You are already here.</div>
+          </div>
+        </div>
+        <div class="phone-caption">Hem</div>
+      </div>
+
+      <!-- Session Player (center, featured) -->
+      <div class="phone-card featured fade-up">
+        <div class="phone">
+          <div class="phone-notch"></div>
+          <div class="screen-player">
+            <div class="player-topbar">
+              <div class="player-topbar-btn">✕</div>
+              <div class="player-label">Session · 5 min</div>
+              <div class="player-topbar-btn">♪</div>
+            </div>
+            <div class="orb-ring">
+              <div class="orb"></div>
+            </div>
+            <div class="player-now">Now Playing</div>
+            <div class="player-title">Grounded Breath</div>
+            <div class="player-subtitle">Five minutes to settle the mind</div>
+            <div class="waveform">
+              <div class="wave-bar active"></div><div class="wave-bar active"></div>
+              <div class="wave-bar active"></div><div class="wave-bar active"></div>
+              <div class="wave-bar active"></div><div class="wave-bar active"></div>
+              <div class="wave-bar active"></div><div class="wave-bar active"></div>
+              <div class="wave-bar"></div><div class="wave-bar"></div>
+              <div class="wave-bar"></div><div class="wave-bar"></div>
+              <div class="wave-bar"></div><div class="wave-bar"></div>
+              <div class="wave-bar"></div><div class="wave-bar"></div>
+              <div class="wave-bar"></div><div class="wave-bar"></div>
+              <div class="wave-bar"></div><div class="wave-bar"></div>
+            </div>
+            <div class="wave-times"><span>1:54</span><span>-3:06</span></div>
+            <div class="controls">
+              <div class="ctrl-btn">↺</div>
+              <div class="ctrl-btn ctrl-play">⏸</div>
+              <div class="ctrl-btn">↻</div>
+            </div>
+          </div>
+        </div>
+        <div class="phone-caption">Sessionsvy</div>
+      </div>
+
+      <!-- Box Breathing -->
+      <div class="phone-card fade-up">
+        <div class="phone">
+          <div class="phone-notch"></div>
+          <div class="screen-box">
+            <div class="box-topbar">
+              <div class="player-topbar-btn">✕</div>
+              <div class="player-label">Box Breathing · 2 min</div>
+              <div style="width:22px"></div>
+            </div>
+            <div class="box-square-wrap">
+              <div class="box-square"></div>
+              <div class="box-dot"></div>
+            </div>
+            <div class="box-phase">Phase 1 of 4</div>
+            <div class="box-action">Inhale</div>
+            <div class="box-seconds">3 seconds</div>
+            <div class="box-timer">1:23</div>
+            <div class="box-pause-btn">⏸</div>
+          </div>
+        </div>
+        <div class="phone-caption">Box Breathing</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features" id="om">
+    <div class="section-header fade-up" style="text-align:center; max-width:520px; margin: 0 auto 4rem;">
+      <div class="divider"></div>
+      <h2>Allt du behöver för en paus</h2>
+      <p class="section-sub">Ingen prenumeration. Ingen komplexitet. Bara ett lugnare sinne.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature fade-up">
+        <div class="feature-icon">🌬</div>
+        <h3>Box Breathing</h3>
+        <p>Animerat 4·4·4·4-mönster som guidar din andning i realtid. Bevisat effektivt mot akut stress.</p>
+      </div>
+      <div class="feature fade-up">
+        <div class="feature-icon">🎧</div>
+        <h3>Guidade sessioner</h3>
+        <p>Fem sessionslängder — från en snabb 2-minuters reset till 30 minuters djup avkoppling inför sömn.</p>
+      </div>
+      <div class="feature fade-up">
+        <div class="feature-icon">🌙</div>
+        <h3>Drift Into Sleep</h3>
+        <p>En speciellt designad 30-minuterssession som sakta för ned kropp och sinne mot djup sömn.</p>
+      </div>
+      <div class="feature fade-up">
+        <div class="feature-icon">📊</div>
+        <h3>Din praktik</h3>
+        <p>Spåra totala minuter, slutförda sessioner och din nuvarande streak — enkelt och motiverande.</p>
+      </div>
+      <div class="feature fade-up">
+        <div class="feature-icon">🔕</div>
+        <h3>Offline-läge</h3>
+        <p>Fungerar fullt ut utan internet. Ta en paus på flyget, i skogen, eller var du än befinner dig.</p>
+      </div>
+      <div class="feature fade-up">
+        <div class="feature-icon">✦</div>
+        <h3>Minimal design</h3>
+        <p>Mörkt, lugnt gränssnitt utan onödiga element. Appen speglar det tillstånd du vill uppnå.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <section class="quote-section">
+    <blockquote class="fade-up">
+      "Small pauses.<br/>Real change."
+    </blockquote>
+    <cite>Pause — PhysAct Mindfulness</cite>
+  </section>
+
+  <!-- WAITLIST -->
+  <section class="waitlist" id="vantelista">
+    <div class="waitlist-inner">
+      <div class="section-header fade-up" style="text-align:center;">
+        <div class="divider"></div>
+        <h2>Var bland de första</h2>
+        <p class="section-sub">Anmäl dig och få tidig åtkomst samt exklusiva erbjudanden vid lansering.</p>
+      </div>
+
+      <form id="waitlistForm" class="fade-up" novalidate>
+        <div class="form-group">
+          <label for="name">Ditt namn</label>
+          <input type="text" id="name" name="name" placeholder="Anna Lindström" autocomplete="name" />
+        </div>
+        <div class="form-group">
+          <label for="email">E-postadress <span style="color:var(--teal)">*</span></label>
+          <input type="email" id="email" name="email" placeholder="anna@exempel.se" autocomplete="email" required />
+        </div>
+        <div class="form-group">
+          <label for="interest">Vad intresserar dig mest?</label>
+          <div class="select-wrapper">
+            <select id="interest" name="interest">
+              <option value="">Välj ett område</option>
+              <option value="breathing">Box Breathing &amp; andning</option>
+              <option value="meditation">Guidade meditationer</option>
+              <option value="sleep">Bättre sömn</option>
+              <option value="stress">Stresshantering</option>
+              <option value="all">Allt ovan</option>
+            </select>
+          </div>
+        </div>
+        <p class="form-note">
+          Genom att anmäla dig godkänner du att vi kontaktar dig om lanseringen.
+          Vi delar aldrig dina uppgifter med tredje part.
+        </p>
+        <button type="submit" class="btn-primary btn-full">Anmäl mig till väntelistan</button>
+      </form>
+
+      <div class="success-msg" id="successMsg">
+        <h3>Du är anmäld.</h3>
+        <p>Vi hör av oss när Pause är redo. Ta en andning — du är redan här.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 <span>PhysAct · Pause</span> — Alla rättigheter förbehållna</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+      { threshold: 0.12 }
+    );
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    document.getElementById('waitlistForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const emailEl = document.getElementById('email');
+      const email = emailEl.value.trim();
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        emailEl.focus();
+        emailEl.style.borderColor = 'rgba(200,80,80,0.6)';
+        return;
+      }
+      // Replace with your backend (Mailchimp, Supabase, Formspree, etc.)
+      console.log('Waitlist signup:', {
+        name: document.getElementById('name').value,
+        email,
+        interest: document.getElementById('interest').value
+      });
+      this.style.display = 'none';
+      document.getElementById('successMsg').style.display = 'block';
+    });
+  </script>
+</body>
+</html>
