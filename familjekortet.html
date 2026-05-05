@@ -122,15 +122,15 @@
     <div class="badge">5% rabatt</div>
 
     <div class="tabs">
-        <button class="tab active" onclick="pick(this, 'bergvik', 'ICA Maxi Bergvik')">ICA Maxi<br>Bergvik</button>
-        <button class="tab" onclick="pick(this, 'valsviken', 'ICA Välsviken')">ICA<br>Välsviken</button>
+        <button class="tab active" onclick="pick(this, 'valsviken', 'ICA Välsviken')">ICA<br>Välsviken</button>
+        <button class="tab" onclick="pick(this, 'bergvik', 'ICA Maxi Bergvik')">ICA Maxi<br>Bergvik</button>
     </div>
 
     <div class="barcode-box">
         <svg id="bc" xmlns="http://www.w3.org/2000/svg"></svg>
     </div>
 
-    <div class="store-name" id="sname">ICA Maxi Bergvik</div>
+    <div class="store-name" id="sname">ICA Välsviken</div>
     <div class="tip">Visa streckkoden i kassan</div>
 </div>
 
@@ -155,7 +155,7 @@ const CODES = {
     valsviken: '9912667400004',
     bergvik:   '9912644300006'
 };
-let currentStore = 'bergvik';
+let currentStore = 'valsviken';
 
 function drawBarcode(code) {
     const bits = ean13bits(code);
